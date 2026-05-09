@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CI/CD Learning Lab • Beautiful Demo</title>
+    <title>CI/CD Learning Hub • Beautiful Demo</title>
 </head>
 <body style="margin: 0; min-height: 100vh; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); font-family: 'Segoe UI', system-ui, -apple-system, 'Inter', 'Segoe UI', Roboto, Helvetica, sans-serif; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
 
     <!-- Main card container with modern glassmorphism effect -->
-    <div style="max-width: 780px; width: 100%; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(2px); border-radius: 2.5rem; box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255,255,255,0.2) inset; overflow: hidden; transition: all 0.2s ease;">
+    <div style="max-width: 860px; width: 100%; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(2px); border-radius: 2.5rem; box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255,255,255,0.2) inset; overflow: hidden; transition: all 0.2s ease;">
 
         <!-- Decorative header strip -->
         <div style="height: 8px; background: linear-gradient(90deg, #38bdf8, #a855f7, #ec4899);"></div>
@@ -16,7 +16,7 @@
         <!-- Content area with playful, inspiring design -->
         <div style="padding: 2.2rem 2rem 2.5rem 2rem;">
 
-            <!-- CI/CD badge / tagline (just for fun) -->
+            <!-- CI/CD badge / tagline -->
             <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 1rem;">
                 <div style="background: #eef2ff; padding: 0.25rem 1rem; border-radius: 40px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.3px; color: #1e40af; display: inline-block; box-shadow: inset 0 1px 1px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.05);">
                     🚀 CI/CD PIPELINE • LEARN & DEPLOY
@@ -33,25 +33,38 @@
                 🌟 This beautiful paragraph shows how <strong style="color: #2563eb; font-weight: 600;">inline CSS</strong> can create stunning effects — gradients, shadows, glassmorphism, and smooth typography. As you learn <strong style="background: linear-gradient(120deg, #e0f2fe, #fae8ff); padding: 0 0.25rem; border-radius: 6px;">CI/CD (Continuous Integration & Continuous Delivery)</strong>, every change you push to your repository can trigger an automatic pipeline. Imagine: you update this text, commit, and in seconds a fresh version goes live on staging or production. No manual FTP, no stress — just <span style="font-family: monospace; background: #eef2ff; padding: 0.2rem 0.4rem; border-radius: 12px; font-size: 0.9rem;">git push</span> and magic ✨
             </p>
 
+            <!-- NEW ADDITIONAL POINT: Key CI/CD Principle Card -->
+            <div style="margin-top: 1.8rem; background: linear-gradient(115deg, #ffffff 0%, #fefce8 100%); border-radius: 1.5rem; padding: 1.2rem 1.5rem; border: 1px solid rgba(168, 85, 247, 0.2); box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.08); transition: transform 0.2s;">
+                <div style="display: flex; gap: 0.9rem; align-items: flex-start; flex-wrap: wrap;">
+                    <div style="font-size: 2rem; background: #f3e8ff; width: 48px; height: 48px; border-radius: 28px; display: flex; align-items: center; justify-content: center;">🎯</div>
+                    <div style="flex: 1;">
+                        <h3 style="margin: 0 0 0.4rem 0; font-size: 1.25rem; font-weight: 700; color: #4c1d95; letter-spacing: -0.2px;">➕ Additional Key Point: Automation is the heart of DevOps</h3>
+                        <p style="margin: 0; font-size: 0.95rem; line-height: 1.5; color: #2d3748;">CI/CD eliminates manual errors by automating integration, testing, and deployment. Each pipeline stage (build → test → security scan → deploy) runs consistently every time. This creates <strong style="color: #0f3b2c;">faster feedback loops</strong>, higher code quality, and <strong>zero-downtime releases</strong>. Even a small HTML demo like this can be version-controlled and auto-deployed using GitHub Pages, Vercel, or Netlify — perfect for mastering CI/CD workflows.</p>
+                    </div>
+                </div>
+            </div>
+
             <!-- extra decorative flex row: mini "pipeline steps" -->
             <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 2rem 0 0.5rem 0; justify-content: center;">
                 <div style="background: white; border-radius: 80px; padding: 0.4rem 1rem; font-size: 0.8rem; font-weight: 600; color: #0f172a; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">📦 BUILD</div>
                 <div style="background: white; border-radius: 80px; padding: 0.4rem 1rem; font-size: 0.8rem; font-weight: 600; color: #0f172a; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">🧪 TEST</div>
                 <div style="background: white; border-radius: 80px; padding: 0.4rem 1rem; font-size: 0.8rem; font-weight: 600; color: #0f172a; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">🚚 DEPLOY</div>
                 <div style="background: white; border-radius: 80px; padding: 0.4rem 1rem; font-size: 0.8rem; font-weight: 600; color: #0f172a; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">✅ VERIFY</div>
+                <div style="background: white; border-radius: 80px; padding: 0.4rem 1rem; font-size: 0.8rem; font-weight: 600; color: #0f172a; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;">🔄 ROLLBACK</div>
             </div>
 
             <!-- Fun learning note with inline style callout -->
             <div style="margin-top: 2rem; padding: 0.8rem 1rem 0.8rem 1.2rem; background: rgba(56, 189, 248, 0.1); border-radius: 1.2rem; display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; border: 1px solid rgba(56, 189, 248, 0.25);">
                 <span style="font-size: 1.6rem;">🔄</span>
-                <span style="font-size: 0.9rem; font-weight: 500; color: #0c4a6e;">💡 <strong>CI/CD insight:</strong> Each inline style here is like a pipeline instruction — direct, immediate, and powerful. When you hook this page to GitHub Actions, GitLab CI, or Jenkins, changes become automatic deployments.</span>
+                <span style="font-size: 0.9rem; font-weight: 500; color: #0c4a6e;">💡 <strong>CI/CD insight:</strong> Each inline style here is like a pipeline instruction — direct, immediate, and powerful. When you hook this page to GitHub Actions, GitLab CI, or Jenkins, changes become automatic deployments. <span style="background: #f1f5f9; padding: 0.1rem 0.4rem; border-radius: 12px; font-family: monospace;">git commit -m "add key point"</span> → 🚀 auto live</span>
             </div>
 
-            <!-- Interactive vibe: simple deployment simulation text (purely aesthetic) -->
-            <div style="text-align: center; margin-top: 2rem;">
+            <!-- Interactive vibe: simple deployment simulation + new badge -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; flex-wrap: wrap; gap: 0.75rem;">
                 <span style="font-size: 0.7rem; background: #e6f7f0; color: #0b3b2f; padding: 0.2rem 0.9rem; border-radius: 20px; font-family: monospace;">🔁 last pipeline status: ✅ SUCCESS (on main branch)</span>
+                <span style="font-size: 0.7rem; background: #fff1f0; color: #9b2c1d; padding: 0.2rem 0.9rem; border-radius: 20px; font-family: monospace;">📌 +1 new insight: automation rhythm</span>
             </div>
         </div>
     </div>
 </body>
-</html> 
+</html>
