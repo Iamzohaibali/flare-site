@@ -2,73 +2,636 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CI/CD · modern landing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Meeting Pulse | Connect & Collaborate</title>
+    <!-- Inline CSS + DHTML behavior (all within this document) -->
     <style>
+        /* Global Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+        body {
+            font-family: system-ui, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #f8faff 0%, #eef2fc 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        /* main card container */
+        .landing-card {
+            max-width: 1300px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(0px);
+            border-radius: 3rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 8px 18px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        /* Responsive grid layout */
+        .meeting-grid {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1.2;
+            padding: 3rem 2.5rem;
+            background: #ffffff;
+        }
+
+        .hero-visual {
+            flex: 1;
+            background: linear-gradient(125deg, #1a2a6c, #b21f1f, #fdbb4d);
+            background-size: 180% 180%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* dynamic accent blob (DHTML later) */
+        .dynamic-blob {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(255,255,200,0.4) 0%, rgba(255,215,0,0.2) 80%);
+            border-radius: 60% 40% 50% 50%;
+            filter: blur(40px);
+            transition: all 0.25s ease-out;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-visual h2, .hero-visual p {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-visual h2 {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .hero-visual p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            max-width: 260px;
+        }
+
+        /* meeting icon */
+        .meeting-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: rgba(255,255,240,0.25);
+            width: 90px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            backdrop-filter: blur(4px);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* left side typography */
+        .badge {
+            display: inline-block;
+            background: #e9ecf8;
+            color: #1d3e8b;
+            font-weight: 600;
+            font-size: 0.8rem;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.3px;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #0a192f;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #2b6ef0, #9b4dff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .desc-text {
+            color: #334155;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin: 1.5rem 0 1.8rem 0;
+            max-width: 90%;
+        }
+
+        /* countdown timer (DHTML interactive) */
+        .timer-card {
+            background: #f0f4fe;
+            border-radius: 1.5rem;
+            padding: 1rem 1.2rem;
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            margin: 1rem 0 1.8rem 0;
+            width: 100%;
+            max-width: 360px;
+            backdrop-filter: blur(2px);
+        }
+
+        .time-segment {
+            background: white;
+            border-radius: 1rem;
+            padding: 0.3rem 0.8rem;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            min-width: 60px;
+        }
+
+        .time-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            font-family: monospace;
+            color: #0f2b4d;
+            line-height: 1;
+        }
+
+        .time-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #4b5563;
+        }
+
+        .meeting-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .btn-primary {
+            background: #0f2b4d;
+            color: white;
+            border: none;
+            padding: 0.85rem 2rem;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            font-family: inherit;
+        }
+
+        .btn-primary:hover {
+            background: #1d4280;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 18px -8px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #bac8e0;
+            padding: 0.85rem 1.6rem;
+            border-radius: 60px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            color: #1f3a6b;
+        }
+
+        .btn-outline:hover {
+            border-color: #0f2b4d;
+            background: #f0f4ff;
+        }
+
+        /* dynamic meeting message */
+        .dynamic-message {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            background: #eef3ff;
+            padding: 0.6rem 1rem;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 500;
+            color: #0057a3;
+            transition: 0.2s;
+        }
+
+        /* guest list simulation (DHTML) */
+        .attendee-area {
+            margin-top: 2rem;
+            border-top: 1px solid #e2edff;
+            padding-top: 1rem;
+        }
+
+        .attendee-title {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #1f3a6b;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .attendee-badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .attendee-badge {
+            background: #e9eef9;
+            padding: 0.25rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #1f2e4a;
+            transition: all 0.1s;
+        }
+
+        .add-attendee {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        #attendeeName {
+            padding: 0.5rem 1rem;
+            border-radius: 60px;
+            border: 1px solid #cfdef5;
+            background: white;
+            font-size: 0.85rem;
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .small-btn {
+            background: #0f2b4d;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .small-btn-outline {
+            background: transparent;
+            border: 1px solid #afc2e0;
+            border-radius: 40px;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        /* responsive touch */
+        @media (max-width: 780px) {
+            .hero-content {
+                padding: 2rem 1.5rem;
+            }
+            h1 {
+                font-size: 2.3rem;
+            }
+            .desc-text {
+                max-width: 100%;
+            }
+            .timer-card {
+                max-width: 100%;
+            }
+        }
+        footer {
+            background: #f9fbfe;
+            padding: 1rem 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #4b6584;
+            border-top: 1px solid #eef2fc;
+        }
     </style>
 </head>
-<body style="margin: 0; background: linear-gradient(125deg, #f8fafc 0%, #eef2ff 100%); font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1.5rem;">
+<body>
 
-    <!-- simple landing container — no extra boxes, just clean content -->
-    <div style="max-width: 760px; width: 100%;">
-        
-        <!-- badge / chip -->
-        <div style="margin-bottom: 1.8rem;">
-            <span style="background: rgba(59,130,246,0.12); font-size: 0.75rem; font-weight: 600; color: #1e40af; padding: 0.3rem 1.2rem; border-radius: 40px; letter-spacing: 0.2px;">🚀 modern CI/CD · simple learning</span>
+<div class="landing-card">
+    <div class="meeting-grid">
+        <!-- LEFT: content + dhtml features (timer, attendees, dynamic messages) -->
+        <div class="hero-content">
+            <span class="badge">✨ Live Interactive Meeting</span>
+            <h1>Where ideas <span class="highlight">connect</span><br> in real time</h1>
+            <p class="desc-text">Join an immersive session, align your team, and turn conversations into action. Next meeting starts soon — be part of the rhythm.</p>
+            
+            <!-- DYNAMIC COUNTDOWN TIMER (DHTML) -->
+            <div class="timer-card" id="timerWidget">
+                <div class="time-segment"><span class="time-number" id="days">00</span><div class="time-label">Days</div></div>
+                <div class="time-segment"><span class="time-number" id="hours">00</span><div class="time-label">Hours</div></div>
+                <div class="time-segment"><span class="time-number" id="minutes">00</span><div class="time-label">Mins</div></div>
+                <div class="time-segment"><span class="time-number" id="seconds">00</span><div class="time-label">Secs</div></div>
+            </div>
+            <div class="dynamic-message" id="meetingStatusMsg">
+                ⏳ Countdown to next strategy sync
+            </div>
+
+            <div class="meeting-cta">
+                <button class="btn-primary" id="joinMeetingBtn">🎧 Join meeting room</button>
+                <button class="btn-outline" id="copyInviteBtn">📋 Copy invite link</button>
+            </div>
+
+            <!-- DHTML: attendee RSVP simulation -->
+            <div class="attendee-area">
+                <div class="attendee-title">
+                    <span>👥 Live RSVP &nbsp;(<span id="attendeeCount">5</span> attending)</span>
+                </div>
+                <div class="attendee-badge-container" id="attendeeList">
+                    <span class="attendee-badge">Alex Chen</span>
+                    <span class="attendee-badge">Jordan Lee</span>
+                    <span class="attendee-badge">Samira Khan</span>
+                    <span class="attendee-badge">Marcus W.</span>
+                    <span class="attendee-badge">Elena R.</span>
+                </div>
+                <div class="add-attendee">
+                    <input type="text" id="attendeeName" placeholder="Your name or colleague" maxlength="30">
+                    <button class="small-btn" id="addAttendeeBtn">➕ RSVP now</button>
+                    <button class="small-btn-outline" id="resetAttendeesBtn">⟳ Reset</button>
+                </div>
+                <p style="font-size:0.7rem; margin-top:0.5rem; color:#536e96;">✨ Click RSVP — dynamic welcome message</p>
+            </div>
         </div>
 
-        <!-- main heading -->
-        <h1 style="font-size: 3.2rem; line-height: 1.2; font-weight: 700; color: #0a1c2f; margin-bottom: 1rem; letter-spacing: -0.02em; max-width: 90%;">
-            Continuous Integration<br>+ Continuous Delivery
-        </h1>
-        
-        <!-- description paragraph -->
-        <p style="font-size: 1.12rem; line-height: 1.55; color: #2d3a4b; margin-bottom: 2rem; max-width: 90%;">
-            Automate your entire software release process. Every code change gets built, tested, and deployed automatically — faster releases, fewer bugs, and happier teams.
-        </p>
-
-        <!-- simple stat / feature row (removed any box) -->
-        <div style="display: flex; flex-wrap: wrap; gap: 1.8rem; margin: 2rem 0 2rem 0; border-top: 1px solid rgba(100,116,139,0.15); padding-top: 2rem;">
-            <div>
-                <div style="font-weight: 700; font-size: 1.6rem; color: #2563eb;">⚡ 10x</div>
-                <div style="font-size: 0.8rem; color: #475569; margin-top: 0.2rem;">faster deployments</div>
-            </div>
-            <div>
-                <div style="font-weight: 700; font-size: 1.6rem; color: #2563eb;">🔁 100%</div>
-                <div style="font-size: 0.8rem; color: #475569; margin-top: 0.2rem;">automated workflow</div>
-            </div>
-            <div>
-                <div style="font-weight: 700; font-size: 1.6rem; color: #2563eb;">✅ 0</div>
-                <div style="font-size: 0.8rem; color: #475569; margin-top: 0.2rem;">manual release steps</div>
-            </div>
-        </div>
-
-        <!-- key practice highlight (simple and minimal) -->
-        <div style="margin: 1rem 0 1.8rem 0;">
-            <p style="font-size: 1rem; line-height: 1.55; color: #1f2a3e; background: rgba(255,255,240,0.5); padding: 0.8rem 0 0.8rem 1rem; border-left: 3px solid #3b82f6;">
-                💡 <strong>Key practice:</strong> Push to GitHub → automatically test → deploy to production. No scripts, no FTP.
+        <!-- RIGHT side: visual + interactive animated blob (DHTML mouse interaction) -->
+        <div class="hero-visual" id="visualZone">
+            <div class="dynamic-blob" id="animatedBlob"></div>
+            <div class="meeting-icon">🎤🤝</div>
+            <h2>Agenda ready</h2>
+            <p>Collaborative decks · live polls · Q&A</p>
+            <p style="margin-top:1rem; font-size:0.85rem; background: rgba(255,255,245,0.2); padding:0.3rem 1rem; border-radius:40px;">
+                🟢 Session: "Future of teamwork"
             </p>
         </div>
-
-        <!-- simple pipeline steps (clean, no extra boxes) -->
-        <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1.5rem 0 1.2rem 0; justify-content: space-between;">
-            <span style="font-size: 0.85rem; font-weight: 500; color: #0f172a;">📦 commit</span>
-            <span style="font-size: 0.85rem; font-weight: 500; color: #0f172a;">⚙️ build</span>
-            <span style="font-size: 0.85rem; font-weight: 500; color: #0f172a;">🧪 test</span>
-            <span style="font-size: 0.85rem; font-weight: 500; color: #0f172a;">🚀 deploy</span>
-            <span style="font-size: 0.85rem; font-weight: 500; color: #0f172a;">📊 monitor</span>
-        </div>
-
-        <!-- footer tip -->
-        <div style="margin-top: 2.5rem; padding-top: 0.8rem; border-top: 1px solid rgba(100,116,139,0.2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-            <span style="font-size: 0.75rem; color: #475569;">✨ ci/cd · learn by doing</span>
-            <span style="font-size: 0.7rem; background: rgba(34,197,94,0.12); color: #15803d; padding: 0.2rem 0.9rem; border-radius: 30px;">ready to automate</span>
-        </div>
     </div>
+    <footer>
+        🚀 Smart meeting hub · real-time interactive demo | next session: AI & product growth
+    </footer>
+</div>
+
+<!-- DHTML Script: countdown, join alerts, attendee manager, interactive blob, copy invite -->
+<script>
+    (function() {
+        // ---- set target meeting date: next Monday at 15:00 local (or +2 days fallback, but makes consistent demo)
+        // we set meeting to next upcoming Monday 3:00 PM (15:00). If today is Monday after 15:00, go to next week.
+        let meetingDate = new Date();
+        const targetDay = 1; // Monday (0=Sunday)
+        let currentDay = meetingDate.getDay();
+        let daysToAdd = (targetDay - currentDay + 7) % 7;
+        if (daysToAdd === 0 && meetingDate.getHours() >= 15) {
+            daysToAdd = 7; // if today is monday but time passed, shift to next monday
+        } else if (daysToAdd === 0) {
+            daysToAdd = 0; // same monday, future time today check later
+        }
+        meetingDate.setDate(meetingDate.getDate() + daysToAdd);
+        meetingDate.setHours(15, 0, 0, 0); // 3 PM
+        
+        // if for some weird reason meeting date already past (edge), set mid next Week +2 days to guarantee future
+        if (meetingDate <= new Date()) {
+            meetingDate = new Date();
+            meetingDate.setDate(meetingDate.getDate() + 3);
+            meetingDate.setHours(15, 0, 0, 0);
+        }
+
+        // DOM elements
+        const daysSpan = document.getElementById('days');
+        const hoursSpan = document.getElementById('hours');
+        const minutesSpan = document.getElementById('minutes');
+        const secondsSpan = document.getElementById('seconds');
+        const statusMsgDiv = document.getElementById('meetingStatusMsg');
+        const joinBtn = document.getElementById('joinMeetingBtn');
+        const copyBtn = document.getElementById('copyInviteBtn');
+        const attendeeContainer = document.getElementById('attendeeList');
+        const attendeeCountSpan = document.getElementById('attendeeCount');
+        const attendeeInput = document.getElementById('attendeeName');
+        const addAttendeeBtn = document.getElementById('addAttendeeBtn');
+        const resetAttendeesBtn = document.getElementById('resetAttendeesBtn');
+        const visualZone = document.getElementById('visualZone');
+        const blob = document.getElementById('animatedBlob');
+
+        // attendees data array (initial)
+        let attendees = ['Alex Chen', 'Jordan Lee', 'Samira Khan', 'Marcus W.', 'Elena R.'];
+
+        function updateAttendeeUI() {
+            // clear and rebuild badges
+            attendeeContainer.innerHTML = '';
+            attendees.forEach(name => {
+                const badge = document.createElement('span');
+                badge.className = 'attendee-badge';
+                badge.textContent = name;
+                attendeeContainer.appendChild(badge);
+            });
+            attendeeCountSpan.innerText = attendees.length;
+            // dynamic message: update meeting status accordingly
+            if (attendees.length >= 8) {
+                statusMsgDiv.innerHTML = '🎉 Wow! ' + attendees.length + ' participants ready — Meeting energy is high!';
+            } else if (attendees.length > 3) {
+                statusMsgDiv.innerHTML = '👍 ' + attendees.length + ' confirmed. Getting closer to full room!';
+            } else {
+                statusMsgDiv.innerHTML = '⏳ Countdown to next strategy sync · ' + attendees.length + ' RSVP\'d';
+            }
+        }
+
+        // add attendee function
+        function addAttendee(name) {
+            let cleanName = name.trim();
+            if (cleanName === "") {
+                statusMsgDiv.innerHTML = "⚠️ Please enter a name to RSVP.";
+                setTimeout(() => {
+                    if (document.getElementById('meetingStatusMsg') === statusMsgDiv) {
+                        // but keep timer dynamic later, we'll reset after 2 sec from countdown updater? better just restore soon
+                        // we will not break countdown context: we preserve after 2 sec update by dynamic timer but it's fine.
+                    }
+                }, 1500);
+                return false;
+            }
+            if (attendees.includes(cleanName)) {
+                statusMsgDiv.innerHTML = `👋 ${cleanName} is already in the guest list!`;
+                setTimeout(() => {}, 1800);
+                return false;
+            }
+            attendees.push(cleanName);
+            updateAttendeeUI();
+            statusMsgDiv.innerHTML = `✨ ${cleanName} just RSVP'd! Welcome to the meeting ✨`;
+            // clear input
+            attendeeInput.value = '';
+            setTimeout(() => {
+                if (statusMsgDiv.innerText.includes('just RSVP')) {
+                    // but countdown will refresh anyway, but it's readable
+                }
+            }, 2000);
+            return true;
+        }
+
+        addAttendeeBtn.addEventListener('click', () => {
+            addAttendee(attendeeInput.value);
+        });
+        resetAttendeesBtn.addEventListener('click', () => {
+            attendees = ['Alex Chen', 'Jordan Lee', 'Samira Khan', 'Marcus W.', 'Elena R.'];
+            updateAttendeeUI();
+            statusMsgDiv.innerHTML = '🔄 Guest list reset to original team. Countdown continues.';
+            attendeeInput.value = '';
+        });
+        
+        // allow Enter key on input
+        attendeeInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                addAttendee(attendeeInput.value);
+            }
+        });
+
+        // Timer update function (dynamic countdown)
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const targetTime = meetingDate.getTime();
+            const distance = targetTime - now;
+
+            if (distance < 0) {
+                // meeting time has passed: set new meeting date +7 days
+                meetingDate.setDate(meetingDate.getDate() + 7);
+                updateCountdown(); // recursive re-evaluate once
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (86400000)) / (3600000));
+            const minutes = Math.floor((distance % 3600000) / 60000);
+            const seconds = Math.floor((distance % 60000) / 1000);
+
+            daysSpan.innerText = days < 10 ? '0' + days : days;
+            hoursSpan.innerText = hours < 10 ? '0' + hours : hours;
+            minutesSpan.innerText = minutes < 10 ? '0' + minutes : minutes;
+            secondsSpan.innerText = seconds < 10 ? '0' + seconds : seconds;
+            
+            // additional interactive message when less than 1 hour left
+            if (distance < 3600000 && distance > 0) {
+                if (!statusMsgDiv.innerText.includes('Getting close')) {
+                    statusMsgDiv.innerHTML = "⏰ Less than 1 hour until meeting! Grab your coffee ☕";
+                }
+            } else if (distance < 86400000 && distance >= 3600000) {
+                if (statusMsgDiv.innerText.includes('Less than 1 hour') || statusMsgDiv.innerText.includes('Countdown')) {
+                    if(!statusMsgDiv.innerText.includes('confirmed')) 
+                        statusMsgDiv.innerHTML = "📅 Meeting starts in less than 24h — RSVP now!";
+                }
+            }
+        }
+
+        // join meeting interaction + soundless alert simulation
+        joinBtn.addEventListener('click', () => {
+            const timeNow = new Date();
+            const diff = meetingDate - timeNow;
+            if (diff <= 0) {
+                statusMsgDiv.innerHTML = "🚀 Meeting is LIVE! Redirecting to virtual room... (simulated)";
+                alert("🔊 Meeting is in session! You’ve joined the collaboration hub. 🎉");
+                // extra style: simulate green badge
+            } else {
+                const daysLeft = Math.floor(diff / (1000*60*60*24));
+                statusMsgDiv.innerHTML = `⏳ Meeting hasn't started yet (in ${daysLeft > 0 ? daysLeft+'d' : 'less than a day'}). You’re registered — we’ll remind you! ✨`;
+                alert("✅ You've reserved your spot! You'll be notified when the meeting begins. (Live countdown active)");
+            }
+        });
+        
+        // copy invite link DHTML
+        copyBtn.addEventListener('click', () => {
+            const fakeLink = "https://meet.pulse.demo/join/strategy-sync-2026";
+            navigator.clipboard.writeText(fakeLink).then(() => {
+                statusMsgDiv.innerHTML = "📎 Invite link copied to clipboard! Share with colleagues 📎";
+                setTimeout(() => {
+                    if (statusMsgDiv.innerText.includes("Invite link copied")) {
+                        // Only reset if no major change, but fine.
+                    }
+                }, 2500);
+            }).catch(() => {
+                alert("Manual copy: " + fakeLink);
+                statusMsgDiv.innerHTML = "🌐 Link: " + fakeLink;
+            });
+        });
+        
+        // DHTML: mouse move interactive blob on right visual side
+        if (visualZone && blob) {
+            visualZone.addEventListener('mousemove', (e) => {
+                const rect = visualZone.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                const mouseY = e.clientY - rect.top;
+                // move blob relative to mouse, but keep inside area
+                const maxX = rect.width - 80;
+                const maxY = rect.height - 80;
+                let newLeft = mouseX - 40;
+                let newTop = mouseY - 40;
+                newLeft = Math.min(Math.max(newLeft, -20), maxX);
+                newTop = Math.min(Math.max(newTop, -20), maxY);
+                blob.style.left = newLeft + 'px';
+                blob.style.top = newTop + 'px';
+                blob.style.transform = 'scale(1.05)';
+                blob.style.transition = 'transform 0.1s ease';
+            });
+            visualZone.addEventListener('mouseleave', () => {
+                // reset blob to center area
+                blob.style.left = '50%';
+                blob.style.top = '60%';
+                blob.style.transform = 'translate(-50%, -50%) scale(1)';
+                blob.style.transition = 'all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+            });
+            // initial position
+            blob.style.position = 'absolute';
+            blob.style.left = '50%';
+            blob.style.top = '60%';
+            blob.style.transform = 'translate(-50%, -50%)';
+        }
+        
+        // call timer every second, and extra ensure UI messages update with attendee count
+        updateCountdown();
+        setInterval(() => {
+            updateCountdown();
+        }, 1000);
+        
+        // initial attendee render
+        updateAttendeeUI();
+        
+        // additional simple hover effect on meeting cta
+        const buttons = document.querySelectorAll('.btn-primary, .btn-outline');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // optional ripple simple effect, no console errors
+            });
+        });
+        
+        // fine: meeting date dynamic accessibility, also add a manual glint of current time to user
+        console.log("Meeting lander ready — DHTML interactions active");
+    })();
+</script>
 </body>
 </html>
