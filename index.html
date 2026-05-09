@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CI/CD • Simple Learning Space</title>
+    <title>CI/CD • clean flow</title>
     <style>
-        /* minimal reset for consistency — only essential */
+        /* minimal reset for consistency */
         * {
             margin: 0;
             padding: 0;
@@ -13,55 +13,49 @@
         }
     </style>
 </head>
-<body style="margin: 0; min-height: 100vh; background: linear-gradient(145deg, #f9fafc 0%, #eef2f7 100%); font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif; display: flex; align-items: center; justify-content: center; padding: 1.5rem;">
+<body style="margin: 0; min-height: 100vh; background: linear-gradient(145deg, #f9fafc 0%, #eef2f7 100%); font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif; display: flex; align-items: center; justify-content: center; padding: 2rem 1.5rem;">
 
-    <!-- clean, minimal card — simple site style -->
-    <div style="max-width: 720px; width: 100%; background: #ffffff; border-radius: 2rem; box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02); overflow: hidden; transition: all 0.2s ease; border: 1px solid rgba(203, 213, 225, 0.4);">
+    <!-- NO outer box / card container — just clean content floating on background -->
+    <div style="max-width: 720px; width: 100%;">
         
-        <!-- subtle top accent (just a gentle color line) -->
-        <div style="height: 5px; background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899); width: 100%;"></div>
+        <!-- simple greeting / badge (no background card) -->
+        <div style="margin-bottom: 1.5rem;">
+            <span style="background: rgba(59,130,246,0.12); backdrop-filter: blur(2px); font-size: 0.75rem; font-weight: 600; color: #1e40af; padding: 0.3rem 1.2rem; border-radius: 40px; letter-spacing: 0.2px; display: inline-block;">✨ learn CI/CD · simple & clear</span>
+        </div>
 
-        <div style="padding: 2.2rem 2rem 2.5rem 2rem;">
-            
-            <!-- simple greeting / badge -->
-            <div style="margin-bottom: 1.2rem;">
-                <span style="background: #eef2ff; font-size: 0.75rem; font-weight: 600; color: #1e40af; padding: 0.25rem 1rem; border-radius: 30px; letter-spacing: 0.2px;">✨ learn CI/CD · simple & clear</span>
-            </div>
+        <!-- main elegant paragraph — minimal, calm, informative, directly on background -->
+        <p style="font-size: 2rem; line-height: 1.25; font-weight: 600; color: #0a1c2f; margin: 0 0 0.75rem 0; letter-spacing: -0.02em;">
+            Continuous Integration<br>+ Continuous Delivery
+        </p>
+        
+        <p style="font-size: 1.08rem; line-height: 1.55; color: #2c3e50; margin-bottom: 2rem; max-width: 90%; border-left: 3px solid #3b82f6; padding-left: 1.2rem;">
+            CI/CD automates your software release process. Every code change is automatically built, tested, and deployed — making delivery faster, safer, and more reliable. No manual steps, no surprises.
+        </p>
 
-            <!-- main elegant paragraph — minimal, calm, informative -->
-            <p style="font-size: 1.35rem; line-height: 1.45; font-weight: 450; color: #0f172a; margin: 0.5rem 0 1rem 0; letter-spacing: -0.2px;">
-                Continuous Integration & Continuous Delivery
-            </p>
-            
-            <p style="font-size: 1rem; line-height: 1.6; color: #334155; margin-bottom: 1.8rem; border-left: 3px solid #3b82f6; padding-left: 1.2rem;">
-                CI/CD automates your software release process. Every code change is automatically built, tested, and deployed — making delivery faster, safer, and more reliable. No manual steps, no surprises.
-            </p>
-
-            <!-- one additional point: beautifully simple + soft card -->
-            <div style="background: #f8fafc; border-radius: 1.25rem; padding: 1.2rem 1.4rem; margin: 1.2rem 0 1rem 0; border: 1px solid #e2e8f0;">
-                <div style="display: flex; gap: 0.8rem; align-items: flex-start;">
-                    <div style="font-size: 1.6rem;">🔄</div>
-                    <div>
-                        <p style="margin: 0; font-size: 0.95rem; line-height: 1.5; color: #1e293b;">
-                            <strong style="color: #0f3b5c;">One key practice:</strong> Automate testing & deployment from day one. Even static sites, docs, or small apps benefit from pipelines — push to GitHub, and let tools like GitHub Actions, Vercel, or Netlify handle the rest.
-                        </p>
-                    </div>
+        <!-- one additional point: beautifully simple + subtle background (still no outer box) -->
+        <div style="background: rgba(255,255,255,0.6); backdrop-filter: blur(4px); border-radius: 1.5rem; padding: 1.3rem 1.5rem; margin: 1.8rem 0 1.6rem 0; border: 1px solid rgba(203,213,225,0.5); box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+            <div style="display: flex; gap: 0.9rem; align-items: flex-start;">
+                <div style="font-size: 1.7rem;">🔄</div>
+                <div>
+                    <p style="margin: 0; font-size: 0.96rem; line-height: 1.5; color: #1e293b;">
+                        <strong style="color: #0f3b5c;">One key practice:</strong> Automate testing & deployment from day one. Even static sites, docs, or small apps benefit from pipelines — push to GitHub, and let tools like GitHub Actions, Vercel, or Netlify handle the rest.
+                    </p>
                 </div>
             </div>
+        </div>
 
-            <!-- simple pipeline visual (minimal, friendly) -->
-            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; margin: 1.6rem 0 0.8rem 0;">
-                <div style="background: transparent; text-align: center; flex: 1; font-size: 0.75rem; font-weight: 500; color: #1f2937; padding: 0.3rem 0; border-bottom: 2px dotted #cbd5e1;">📦 commit</div>
-                <div style="background: transparent; text-align: center; flex: 1; font-size: 0.75rem; font-weight: 500; color: #1f2937; padding: 0.3rem 0; border-bottom: 2px dotted #cbd5e1;">⚙️ build</div>
-                <div style="background: transparent; text-align: center; flex: 1; font-size: 0.75rem; font-weight: 500; color: #1f2937; padding: 0.3rem 0; border-bottom: 2px dotted #cbd5e1;">🧪 test</div>
-                <div style="background: transparent; text-align: center; flex: 1; font-size: 0.75rem; font-weight: 500; color: #1f2937; padding: 0.3rem 0; border-bottom: 2px dotted #cbd5e1;">🚀 deploy</div>
-            </div>
+        <!-- simple pipeline visual (minimal, friendly) -->
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; margin: 1.2rem 0 1rem 0;">
+            <div style="background: transparent; text-align: center; flex: 1; font-size: 0.75rem; font-weight: 500; color: #1f2937; padding: 0.4rem 0; border-bottom: 2px dotted #94a3b8;">📦 commit</div>
+            <div style="background: transparent; text-align: center; flex: 1; font-size: 0.75rem; font-weight: 500; color: #1f2937; padding: 0.4rem 0; border-bottom: 2px dotted #94a3b8;">⚙️ build</div>
+            <div style="background: transparent; text-align: center; flex: 1; font-size: 0.75rem; font-weight: 500; color: #1f2937; padding: 0.4rem 0; border-bottom: 2px dotted #94a3b8;">🧪 test</div>
+            <div style="background: transparent; text-align: center; flex: 1; font-size: 0.75rem; font-weight: 500; color: #1f2937; padding: 0.4rem 0; border-bottom: 2px dotted #94a3b8;">🚀 deploy</div>
+        </div>
 
-            <!-- small note: clear and instructive -->
-            <div style="margin-top: 1.8rem; padding-top: 0.5rem; border-top: 1px solid #e9edf2; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-                <span style="font-size: 0.7rem; color: #5b6e8c;">💡 tip: every git push = potential auto-deploy</span>
-                <span style="font-size: 0.7rem; background: #eef2ff; color: #2563eb; padding: 0.2rem 0.8rem; border-radius: 14px;">✅ pipeline ready</span>
-            </div>
+        <!-- small note: clean and open -->
+        <div style="margin-top: 2rem; padding-top: 0.6rem; border-top: 1px solid rgba(148,163,184,0.3); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.6rem;">
+            <span style="font-size: 0.75rem; color: #475569;">💡 tip: every git push = potential auto-deploy</span>
+            <span style="font-size: 0.7rem; background: rgba(37,99,235,0.1); color: #2563eb; padding: 0.2rem 0.9rem; border-radius: 30px; font-weight: 500;">✅ pipeline ready</span>
         </div>
     </div>
 </body>
