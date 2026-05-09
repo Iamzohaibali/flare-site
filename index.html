@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Meeting Pulse | Immersive Conference Hub</title>
+    <title>Summit 2026 | Ultimate Meeting Experience</title>
     <style>
         * {
             margin: 0;
@@ -12,616 +12,757 @@
         }
 
         body {
-            font-family: system-ui, 'Segoe UI', 'Inter', 'Helvetica Neue', sans-serif;
-            background: linear-gradient(135deg, #f5f7fe 0%, #e9eefa 100%);
+            font-family: system-ui, 'Inter', 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: radial-gradient(circle at 10% 20%, #f0f4ff, #e6edfb);
             min-height: 100vh;
-            padding: 2rem 1.5rem;
+            padding: 1.8rem 1.5rem;
         }
 
-        /* main container */
-        .main-container {
-            max-width: 1400px;
+        .global-wrap {
+            max-width: 1440px;
             margin: 0 auto;
         }
 
-        /* Hero card */
-        .hero-card {
-            background: rgba(255, 255, 255, 0.97);
-            backdrop-filter: blur(0px);
-            border-radius: 2.5rem;
-            box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.25);
+        /* Hero Master Card */
+        .hero-master {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 3rem;
+            box-shadow: 0 35px 60px -20px rgba(0, 0, 0, 0.3);
             overflow: hidden;
             margin-bottom: 2.5rem;
             transition: all 0.2s;
         }
 
-        .grid-2col {
+        .flex-hero {
             display: flex;
             flex-wrap: wrap;
         }
 
-        .left-content {
-            flex: 1.2;
-            padding: 3rem 2.5rem;
+        .hero-text {
+            flex: 1.3;
+            padding: 3rem 2.8rem;
             background: #ffffff;
         }
 
-        .right-visual {
+        .hero-visualx {
             flex: 1;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            background: linear-gradient(125deg, #0b2b44, #1b4f6e, #2a7f6e);
+            position: relative;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            flex-direction: column;
             color: white;
             text-align: center;
-            position: relative;
             overflow: hidden;
         }
 
-        .dynamic-blob {
+        .interactive-blob {
             position: absolute;
-            width: 280px;
-            height: 280px;
-            background: radial-gradient(circle, rgba(255,215,130,0.35) 0%, rgba(255,100,100,0.2) 80%);
-            border-radius: 50% 40% 60% 40%;
-            filter: blur(55px);
-            transition: all 0.2s ease-out;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,220,150,0.4), rgba(255,80,120,0.2));
+            filter: blur(65px);
+            border-radius: 45% 55% 70% 30%;
             pointer-events: none;
+            transition: 0.15s linear;
             z-index: 0;
         }
 
-        .badge {
+        .badge-pill {
+            background: #eef3ff;
+            color: #1e40af;
             display: inline-block;
-            background: #eef2ff;
-            color: #1e3a8a;
-            font-weight: 600;
-            font-size: 0.75rem;
-            padding: 0.3rem 1rem;
+            padding: 0.3rem 1.2rem;
             border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
             margin-bottom: 1.2rem;
-            letter-spacing: 0.3px;
         }
 
         h1 {
-            font-size: 3.3rem;
+            font-size: 3.6rem;
             font-weight: 800;
-            line-height: 1.15;
-            color: #0a192f;
-            margin-bottom: 1rem;
-        }
-
-        .highlight {
-            background: linear-gradient(120deg, #2563eb, #7c3aed);
+            line-height: 1.2;
+            background: linear-gradient(135deg, #0a2540, #2563eb);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
+            margin-bottom: 1rem;
         }
 
-        .desc-text {
-            color: #334155;
+        .desc-large {
+            color: #2c3e66;
             font-size: 1.05rem;
             line-height: 1.5;
             margin: 1rem 0 1.5rem;
             max-width: 90%;
         }
 
-        /* timer */
-        .timer-card {
-            background: #f0f4fe;
-            border-radius: 1.5rem;
+        .timer-flex {
+            background: #f1f5fe;
+            border-radius: 1.8rem;
             padding: 1rem 1.2rem;
             display: inline-flex;
             flex-wrap: wrap;
-            gap: 0.8rem;
-            align-items: center;
-            margin: 0.5rem 0 1.2rem;
-            width: 100%;
-            max-width: 420px;
+            gap: 1rem;
+            margin: 0.8rem 0 1.2rem;
         }
 
-        .time-segment {
+        .timeBox {
             background: white;
             border-radius: 1rem;
-            padding: 0.3rem 0.7rem;
+            padding: 0.3rem 0.8rem;
+            min-width: 68px;
             text-align: center;
-            min-width: 60px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
 
-        .time-number {
-            font-size: 1.7rem;
+        .timeNum {
+            font-size: 1.9rem;
             font-weight: 800;
             font-family: monospace;
             color: #0f2b4d;
         }
 
-        .cta-group {
+        .btn-group {
             display: flex;
-            gap: 1rem;
             flex-wrap: wrap;
-            margin: 1.2rem 0 1rem;
+            gap: 1rem;
+            margin: 1.2rem 0;
         }
 
-        .btn-primary {
+        .btn-solid {
             background: #0f2b4d;
-            color: white;
             border: none;
             padding: 0.85rem 2rem;
-            font-weight: 600;
             border-radius: 60px;
+            color: white;
+            font-weight: 600;
             cursor: pointer;
             transition: 0.2s;
         }
 
-        .btn-outline {
+        .btn-ghost {
             background: transparent;
-            border: 1.5px solid #bac8e0;
-            padding: 0.85rem 1.6rem;
+            border: 1.5px solid #bcd0f0;
+            padding: 0.85rem 2rem;
             border-radius: 60px;
             font-weight: 500;
             cursor: pointer;
         }
 
-        .btn-primary:hover, .btn-outline:hover {
-            transform: translateY(-2px);
-        }
-
-        /* attendee section */
-        .attendee-area {
-            margin-top: 1.8rem;
-            border-top: 1px solid #e2edff;
-            padding-top: 1.2rem;
-        }
-
-        .attendee-badge-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 0.6rem 0;
-        }
-
-        .attendee-badge {
-            background: #eef2ff;
-            padding: 0.25rem 0.8rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #1f2e4a;
-        }
-
-        .add-attendee {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-top: 0.5rem;
-        }
-
-        #attendeeName {
-            padding: 0.5rem 1rem;
-            border-radius: 60px;
-            border: 1px solid #cfdef5;
-            flex: 1;
-        }
-
-        /* NEW SECTIONS: Agenda, Speakers, Feedback */
-        .extra-sections {
+        /* extended sections grid */
+        .extended-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.8rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
         }
 
-        .info-card {
-            background: white;
-            border-radius: 1.8rem;
-            padding: 1.5rem;
-            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.08);
+        .glass-card {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 1.6rem;
+            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.1);
             transition: all 0.2s;
         }
 
-        .card-title {
-            font-size: 1.4rem;
+        .card-header {
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             display: flex;
             align-items: center;
             gap: 0.6rem;
-            color: #0a2540;
+            border-left: 5px solid #2563eb;
+            padding-left: 0.8rem;
         }
 
-        .agenda-list {
-            list-style: none;
-        }
-        .agenda-list li {
-            padding: 0.7rem 0;
-            border-bottom: 1px solid #edf2f7;
+        /* Schedule item */
+        .schedule-item {
             display: flex;
-            gap: 0.8rem;
+            border-bottom: 1px solid #e9eef5;
+            padding: 0.8rem 0;
             align-items: baseline;
+            gap: 0.8rem;
         }
-        .time-tag {
+        .time-badge {
             font-weight: 700;
             color: #2563eb;
-            min-width: 70px;
+            min-width: 75px;
             font-size: 0.85rem;
         }
-        .speaker-grid {
+
+        .sponsor-row {
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        .speaker {
-            display: flex;
-            gap: 1rem;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: space-around;
             align-items: center;
-            background: #f8fafc;
-            padding: 0.7rem;
-            border-radius: 1.2rem;
+            margin: 1rem 0;
         }
-        .avatar {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(145deg, #2563eb, #7c3aed);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-        .feedback-area textarea {
-            width: 100%;
-            border-radius: 1rem;
-            border: 1px solid #e2e8f0;
-            padding: 0.7rem;
-            margin: 0.6rem 0;
-            font-family: inherit;
-        }
-        .feedback-stats {
-            font-size: 0.85rem;
-            color: #2c3e66;
-            margin-top: 0.5rem;
-        }
-        .live-indicator {
-            background: #dcfce7;
-            color: #15803d;
-            border-radius: 40px;
-            padding: 0.2rem 0.8rem;
-            font-size: 0.7rem;
+        .sponsor-logo {
+            background: #f8fafd;
+            padding: 0.4rem 1rem;
+            border-radius: 60px;
             font-weight: 600;
-            display: inline-block;
+            color: #2c3e66;
         }
-        footer {
-            margin-top: 2.5rem;
-            text-align: center;
+
+        /* Chat */
+        .chat-messages {
+            max-height: 180px;
+            overflow-y: auto;
+            background: #f8fafc;
+            border-radius: 1.2rem;
+            padding: 0.8rem;
+            margin: 0.8rem 0;
             font-size: 0.8rem;
-            color: #4b5563;
         }
-        @media (max-width: 780px) {
-            .left-content { padding: 1.8rem; }
+        .chat-msg {
+            margin-bottom: 0.6rem;
+            padding: 0.3rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .insight-bar {
+            background: #eef2ff;
+            border-radius: 1rem;
+            padding: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1e3a8a;
+        }
+        
+        /* NEW SECTION: Exclusive Resources & Giveaways */
+        .resources-section {
+            background: linear-gradient(115deg, #ffffff 0%, #fef7e0 100%);
+            border-radius: 2rem;
+            padding: 1.8rem 2rem;
+            margin: 1.8rem 0;
+            box-shadow: 0 15px 35px -12px rgba(0,0,0,0.12);
+            border: 1px solid rgba(255,215,0,0.3);
+        }
+        
+        .resources-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .resource-item {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255,255,245,0.7);
+            border-radius: 1.5rem;
+            transition: 0.2s;
+        }
+        
+        .resource-icon {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .claim-btn {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            margin-top: 0.6rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .giveaway-timer {
+            background: #1e293b;
+            color: #ffd966;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 0.75rem;
+            color: #4a627a;
+            padding: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            .hero-text { padding: 2rem; }
             h1 { font-size: 2.3rem; }
         }
     </style>
 </head>
 <body>
-<div class="main-container">
-    <!-- MAIN HERO CARD -->
-    <div class="hero-card">
-        <div class="grid-2col">
-            <div class="left-content">
-                <span class="badge">🎙️ LIVE · FUTURE OF WORK SUMMIT</span>
-                <h1>Where visionaries <span class="highlight">collide</span><br> & ideas ignite</h1>
-                <p class="desc-text">Join 500+ creators, leaders, and innovators for an immersive meeting experience. Real-time collaboration, keynotes, and breakout sessions.</p>
+<div class="global-wrap">
+    <!-- MAIN HERO -->
+    <div class="hero-master">
+        <div class="flex-hero">
+            <div class="hero-text">
+                <span class="badge-pill">🌟 GLOBAL SUMMIT 2026 · HYBRID EDITION</span>
+                <h1>Connect, disrupt &<br>shape the <span style="background: linear-gradient(120deg,#2563eb,#a855f7); background-clip:text; -webkit-background-clip:text; color:transparent;">future of meetings</span></h1>
+                <p class="desc-large">Join 1500+ visionaries, 40+ speakers, and immersive sessions. Real-time collaboration, AI networking, and interactive workshops.</p>
                 
-                <div class="timer-card">
-                    <div class="time-segment"><span class="time-number" id="days">00</span><div class="time-label">Days</div></div>
-                    <div class="time-segment"><span class="time-number" id="hours">00</span><div class="time-label">Hours</div></div>
-                    <div class="time-segment"><span class="time-number" id="minutes">00</span><div class="time-label">Mins</div></div>
-                    <div class="time-segment"><span class="time-number" id="seconds">00</span><div class="time-label">Secs</div></div>
+                <div class="timer-flex">
+                    <div class="timeBox"><span class="timeNum" id="daysCount">00</span><div>Days</div></div>
+                    <div class="timeBox"><span class="timeNum" id="hoursCount">00</span><div>Hours</div></div>
+                    <div class="timeBox"><span class="timeNum" id="minutesCount">00</span><div>Mins</div></div>
+                    <div class="timeBox"><span class="timeNum" id="secondsCount">00</span><div>Secs</div></div>
                 </div>
-                <div class="dynamic-message" id="meetingStatusMsg" style="background:#eef3ff; padding:0.5rem 1rem; border-radius:40px; font-size:0.85rem; margin-bottom:1rem; display:inline-block;">
-                    ⏳ Countdown to main stage keynote
+                <div id="liveMoodMsg" style="background: #eef3ff; padding: 0.5rem 1rem; border-radius: 60px; font-size: 0.85rem; display: inline-block; margin-bottom: 1rem;">🎯 Final countdown to main stage</div>
+                
+                <div class="btn-group">
+                    <button class="btn-solid" id="mainJoinBtn">🎧 Enter Meeting Hub</button>
+                    <button class="btn-ghost" id="copyLinkBtn">📋 Copy Invite Link</button>
+                    <button class="btn-ghost" id="calendarBtn">📅 Add to Calendar</button>
                 </div>
 
-                <div class="cta-group">
-                    <button class="btn-primary" id="joinMeetingBtn">🎧 Join meeting room</button>
-                    <button class="btn-outline" id="copyInviteBtn">📋 Copy invite</button>
-                </div>
-
-                <!-- attendee RSVP dynamic -->
-                <div class="attendee-area">
-                    <div class="attendee-title" style="font-weight:600;">👥 Live RSVP · <span id="attendeeCount">5</span> attending</div>
-                    <div class="attendee-badge-container" id="attendeeList"></div>
-                    <div class="add-attendee">
-                        <input type="text" id="attendeeName" placeholder="Your full name">
-                        <button class="btn-primary" id="addAttendeeBtn" style="padding:0.5rem 1.2rem;">➕ RSVP</button>
-                        <button class="btn-outline" id="resetAttendeesBtn" style="padding:0.5rem 1rem;">⟳ Reset</button>
+                <!-- RSVP & attendee section extended -->
+                <div style="margin-top: 1.8rem; border-top: 1px solid #eef2ff; padding-top: 1.2rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap:wrap;">
+                        <span style="font-weight: 700;">👥 Live RSVP · <span id="attendeeTotal">248</span> attending</span>
+                        <span style="font-size:0.7rem; background:#eef2ff; padding:0.2rem 0.8rem; border-radius:40px;">🔥 32 companies</span>
+                    </div>
+                    <div id="attendeeListContainer" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.8rem 0;"></div>
+                    <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                        <input type="text" id="newAttendeeName" placeholder="Your name & surname" style="flex:1; padding:0.6rem; border-radius:60px; border:1px solid #cfdef5;">
+                        <button id="rsvpBtn" class="btn-solid" style="padding:0.5rem 1.2rem;">+ RSVP now</button>
+                        <button id="resetRsvpBtn" class="btn-ghost" style="padding:0.5rem 1rem;">⟳ Reset</button>
                     </div>
                 </div>
             </div>
-            <div class="right-visual" id="visualZone">
-                <div class="dynamic-blob" id="animatedBlob"></div>
+            <div class="hero-visualx" id="blobZone">
+                <div class="interactive-blob" id="movingBlob"></div>
                 <div style="position:relative; z-index:2;">
-                    <div style="font-size:4rem; background:rgba(255,255,245,0.2); width:100px; height:100px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem;">🎤🤝</div>
-                    <h2 style="font-size:1.8rem;">Hybrid Experience</h2>
-                    <p>AI-translated · Live polling · Networking</p>
-                    <div style="margin-top:1.5rem; background:rgba(255,255,245,0.15); border-radius:60px; padding:0.3rem 1rem; font-size:0.8rem;">✨ Sponsored by TechFlow</div>
+                    <div style="font-size:4.5rem; background:rgba(255,255,240,0.2); width:110px; height:110px; border-radius: 50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem;">🎙️🌍</div>
+                    <h3 style="font-size:1.6rem;">Keynote: "Beyond Boundaries"</h3>
+                    <p>Live from San Francisco · Streaming worldwide</p>
+                    <div style="margin-top: 1.2rem;"><span class="badge-pill" style="background: rgba(255,255,245,0.3); color:white;">✨ 40+ sessions · networking hub</span></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ADDITIONAL CONTENT: AGENDA + SPEAKERS + FEEDBACK WIDGET -->
-    <div class="extra-sections">
-        <!-- Agenda Card -->
-        <div class="info-card">
-            <div class="card-title">
-                <span>📅</span> Event Agenda
-                <span class="live-indicator">Live updates</span>
+    <!-- EXTENDED CONTENT: AGENDA + SPEAKERS + LIVE CHAT + POLLS & SPONSORS -->
+    <div class="extended-grid">
+        <!-- Full agenda card -->
+        <div class="glass-card">
+            <div class="card-header">📅 Summit Schedule</div>
+            <div>
+                <div class="schedule-item"><span class="time-badge">09:00 AM</span><span><strong>Registration & Virtual Coffee</strong> · Networking lounges open</span></div>
+                <div class="schedule-item"><span class="time-badge">10:00 AM</span><span><strong>Opening Keynote:</strong> AI & Collective Intelligence (Dr. Maya Chen)</span></div>
+                <div class="schedule-item"><span class="time-badge">11:45 AM</span><span><strong>Panel:</strong> Future of Hybrid Work · Leaders from Google, Meta</span></div>
+                <div class="schedule-item"><span class="time-badge">01:30 PM</span><span><strong>Breakout tracks:</strong> Design, Leadership, Tech Ethics</span></div>
+                <div class="schedule-item"><span class="time-badge">03:15 PM</span><span><strong>Fireside Chat:</strong> Inclusive Innovation</span></div>
+                <div class="schedule-item"><span class="time-badge">05:00 PM</span><span><strong>Closing Ceremony & Awards</strong> · Afterparty</span></div>
             </div>
-            <ul class="agenda-list">
-                <li><span class="time-tag">09:30 AM</span> <strong>Keynote:</strong> The AI Revolution in Teamwork</li>
-                <li><span class="time-tag">11:00 AM</span> <strong>Breakout:</strong> Design Thinking Sprint</li>
-                <li><span class="time-tag">12:30 PM</span> <strong>Lunch & Networking</strong> (virtual rooms)</li>
-                <li><span class="time-tag">02:00 PM</span> <strong>Panel:</strong> Future of Remote Leadership</li>
-                <li><span class="time-tag">04:00 PM</span> <strong>Closing:</strong> Actionable Takeaways</li>
-            </ul>
-            <div style="margin-top:1rem; font-size:0.8rem; background:#f1f5f9; border-radius:1rem; padding:0.5rem; text-align:center;">
-                🎯 All times in EST · Recordings available
-            </div>
+            <div class="insight-bar" style="margin-top:1rem; text-align:center;">🎥 All sessions recorded · Interactive Q&A live</div>
         </div>
 
-        <!-- Speakers Card -->
-        <div class="info-card">
-            <div class="card-title">
-                <span>🎤</span> Featured Speakers
+        <!-- Speakers + Sponsors combined card -->
+        <div class="glass-card">
+            <div class="card-header">🎤 Featured Voices</div>
+            <div style="display:grid; grid-template-columns: repeat(2,1fr); gap:0.8rem; margin-bottom:1.5rem;">
+                <div><strong>Dr. Maya Chen</strong><br><span style="font-size:0.75rem;">AI Ethics, Stanford</span></div>
+                <div><strong>James Kari</strong><br><span style="font-size:0.75rem;">Product @ MeetHub</span></div>
+                <div><strong>Sofia Velez</strong><br><span style="font-size:0.75rem;">Author, Future Work</span></div>
+                <div><strong>Rahul Thakur</strong><br><span style="font-size:0.75rem;">Digital Transformation</span></div>
+                <div><strong>Elena Marchetti</strong><br><span style="font-size:0.75rem;">CEO, CollabX</span></div>
+                <div><strong>Michael O.</strong><br><span style="font-size:0.75rem;">Design Partner</span></div>
             </div>
-            <div class="speaker-grid">
-                <div class="speaker">
-                    <div class="avatar">DR</div>
-                    <div><strong>Dr. Maya Chen</strong><br>AI Ethicist, Stanford</div>
-                </div>
-                <div class="speaker">
-                    <div class="avatar">JM</div>
-                    <div><strong>James M. Kari</strong><br>Head of Product,MeetHub</div>
-                </div>
-                <div class="speaker">
-                    <div class="avatar">SV</div>
-                    <div><strong>Sofia Velez</strong><br>Future of Work Author</div>
-                </div>
-                <div class="speaker">
-                    <div class="avatar">RT</div>
-                    <div><strong>Rahul Thakur</strong><br>Digital Transformation Leader</div>
-                </div>
+            <div class="card-header" style="margin-top:0.5rem;">🤝 Partners & Sponsors</div>
+            <div class="sponsor-row">
+                <span class="sponsor-logo">TechFlow</span>
+                <span class="sponsor-logo">InnovateX</span>
+                <span class="sponsor-logo">FutureLabs</span>
+                <span class="sponsor-logo">CloudScale</span>
+                <span class="sponsor-logo">DesignHub</span>
             </div>
-            <div class="feedback-stats" style="margin-top:0.8rem;">
-                🌟 +12 industry experts joining live Q&A
-            </div>
+            <div class="insight-bar" style="margin-top:1rem;">🏆 Powered by global innovation network</div>
         </div>
 
-        <!-- Interactive Feedback & Poll (DHTML extra content) -->
-        <div class="info-card">
-            <div class="card-title">
-                <span>💬</span> Live Feedback Hub
-                <span id="pollBadge" style="font-size:0.7rem;">✨ vote now</span>
+        <!-- Live engagement zone: Poll + Live Chat simulation + Feedback -->
+        <div class="glass-card">
+            <div class="card-header">💬 Live Engagement Hub</div>
+            <div><strong>⚡ Instant Poll:</strong> What's your top goal?</div>
+            <div style="display: flex; gap:0.6rem; margin: 0.6rem 0; flex-wrap:wrap;">
+                <button class="pollOptionBtn" data-opt="Networking">🤝 Networking</button>
+                <button class="pollOptionBtn" data-opt="Learning">🧠 Learning</button>
+                <button class="pollOptionBtn" data-opt="Inspiration">✨ Inspiration</button>
+                <button class="pollOptionBtn" data-opt="Business">💼 Partnerships</button>
             </div>
-            <div class="feedback-area">
-                <p style="font-weight:500; margin-bottom:0.3rem;">📊 Quick poll: Which topic excites you most?</p>
-                <div style="display:flex; gap:0.8rem; flex-wrap:wrap; margin:0.6rem 0;">
-                    <button class="poll-btn" data-topic="AI">🤖 AI & Automation</button>
-                    <button class="poll-btn" data-topic="Remote">🏡 Remote Culture</button>
-                    <button class="poll-btn" data-topic="Leadership">🚀 Leadership</button>
-                </div>
-                <div id="pollResult" style="font-size:0.85rem; background:#eef2ff; padding:0.4rem; border-radius:12px;">→ waiting for votes</div>
-                <textarea id="feedbackMsg" rows="2" placeholder="Share your thoughts or questions for speakers..."></textarea>
-                <button id="submitFeedbackBtn" class="btn-primary" style="padding:0.5rem 1rem; font-size:0.8rem;">📝 Send feedback</button>
-                <div id="feedbackConfirm" class="feedback-stats"></div>
-                <div class="feedback-stats" id="feedbackCounter">💬 0 messages from attendees</div>
+            <div id="pollLiveResult" style="background:#eef2ff; border-radius:1rem; padding:0.5rem; font-size:0.8rem; margin-bottom:1rem;">📊 Waiting for votes → realtime results</div>
+            
+            <div><strong>💬 Community Wall (Live chat simulation)</strong></div>
+            <div class="chat-messages" id="chatMessagesBox">
+                <div class="chat-msg">🌟 Sarah J: So excited for the AI panel!</div>
+                <div class="chat-msg">🚀 Marcus: Anyone from design track here?</div>
+                <div class="chat-msg">🎤 Organizer: Welcome everyone, 10 mins to opening!</div>
+            </div>
+            <div style="display: flex; gap:0.5rem;">
+                <input type="text" id="chatInputMsg" placeholder="Say something..." style="flex:1; border-radius:60px; border:1px solid #cfdef5; padding:0.5rem 1rem;">
+                <button id="sendChatMsgBtn" class="btn-solid" style="padding:0.5rem 1rem;">Send</button>
+            </div>
+            <div class="insight-bar" style="margin-top:0.8rem; display: flex; justify-content: space-between;">
+                <span>📊 <span id="pollTotalVotes">0</span> votes cast</span>
+                <span>💬 <span id="chatMsgCount">3</span> messages</span>
+                <span>🎯 <span id="liveAttendeeStats">248</span> live attendees</span>
             </div>
         </div>
     </div>
 
-    <!-- Bonus DHTML section: Quick stats with live counters -->
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: 2rem; background: white; border-radius: 2rem; padding: 1rem 1.5rem;">
-        <div style="text-align:center;"><span style="font-size:1.6rem; font-weight:800;" id="globalAttendees">187</span><br>🌍 global attendees</div>
-        <div style="text-align:center;"><span style="font-size:1.6rem; font-weight:800;" id="pollVotesCount">0</span><br>📊 poll votes</div>
-        <div style="text-align:center;"><span style="font-size:1.6rem; font-weight:800;" id="feedbackMsgCount">0</span><br>💡 audience insights</div>
-        <div style="text-align:center;"><span style="font-size:1.6rem; font-weight:800;">🎥 4</span><br>live tracks</div>
+    <!-- 2nd row of extra content: stats counter, workshop banner -->
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; background: white; border-radius: 2rem; padding: 1.5rem; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <div style="text-align:center;"><span class="stat-number" id="statsAttendees">248</span><br>Registrants</div>
+        <div style="text-align:center;"><span class="stat-number" id="statsCountries">34</span><br>Countries</div>
+        <div style="text-align:center;"><span class="stat-number" id="statsWorkshops">12</span><br>Workshops</div>
+        <div style="text-align:center;"><span class="stat-number" id="statsSpeakers">42</span><br>Speakers</div>
+        <button id="simulateWorkshopBtn" style="background:#1e3a8a; border:none; padding:0.6rem 1.5rem; border-radius:40px; color:white; cursor:pointer;">🎯 Join Virtual Booth</button>
+    </div>
+
+    <!-- ========== NEW SECTION: EXCLUSIVE RESOURCES & GIVEAWAYS (extra) ========== -->
+    <div class="resources-section" id="giveawaySection">
+        <div class="card-header" style="border-left-color: #f59e0b;">🎁 Exclusive Resources & Giveaways</div>
+        <div class="resources-grid">
+            <div class="resource-item">
+                <div class="resource-icon">📘</div>
+                <h3>2026 Trend Report</h3>
+                <p>AI, hybrid work & leadership insights</p>
+                <button class="claim-btn" data-resource="report">Download Free</button>
+            </div>
+            <div class="resource-item">
+                <div class="resource-icon">🎫</div>
+                <h3>Workshop Pass</h3>
+                <p>Access 3 premium workshops</p>
+                <button class="claim-btn" data-resource="workshop">Claim Pass</button>
+            </div>
+            <div class="resource-item">
+                <div class="resource-icon">💎</div>
+                <h3>Flash Giveaway</h3>
+                <p>Annual Pro Subscription</p>
+                <button class="claim-btn" id="giveawayBtn">Enter Draw</button>
+                <div id="giveawayTimerDisplay" class="giveaway-timer" style="margin-top:10px; font-size:0.7rem;">⏳ Next draw: 02:30</div>
+            </div>
+        </div>
+        <div id="giveawayStatusMsg" style="margin-top: 1rem; text-align: center; font-size: 0.85rem; font-weight: 500; color: #b45309;"></div>
     </div>
 
     <footer>
-        🚀 Meeting Pulse · Next-Gen Conference Experience | Interactive DHTML | Real-time RSVP, Polls & Feedback
+        🚀 Summit 2026 – Interactive Meeting Platform | Real-time RSVP, Live Chat, Polls, Giveaways & Dynamic Content | #FutureOfMeetings
     </footer>
 </div>
 
 <script>
     (function() {
-        // ---------- Meeting Date: next Thursday 2:00 PM ----------
-        let meetingDate = new Date();
-        let targetWeekday = 4; // Thursday
-        let currentDay = meetingDate.getDay();
-        let daysToAdd = (targetWeekday - currentDay + 7) % 7;
-        if (daysToAdd === 0 && meetingDate.getHours() >= 14) daysToAdd = 7;
-        meetingDate.setDate(meetingDate.getDate() + daysToAdd);
-        meetingDate.setHours(14, 0, 0, 0);
-        if (meetingDate <= new Date()) {
-            meetingDate = new Date();
-            meetingDate.setDate(meetingDate.getDate() + 4);
-            meetingDate.setHours(14,0,0,0);
+        // MEETING DATE: March 12, 2026 10:00 AM (example future mock)
+        let targetDate = new Date();
+        targetDate.setFullYear(2026, 2, 12); // March 12, 2026
+        targetDate.setHours(10, 0, 0, 0);
+        if(targetDate <= new Date()) {
+            targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 12);
+            targetDate.setHours(10,0,0,0);
         }
-
-        // DOM elements: timer
-        const daysSpan = document.getElementById('days');
-        const hoursSpan = document.getElementById('hours');
-        const minutesSpan = document.getElementById('minutes');
-        const secondsSpan = document.getElementById('seconds');
-        const statusMsgDiv = document.getElementById('meetingStatusMsg');
-        const joinBtn = document.getElementById('joinMeetingBtn');
-        const copyBtn = document.getElementById('copyInviteBtn');
-        const attendeeContainer = document.getElementById('attendeeList');
-        const attendeeCountSpan = document.getElementById('attendeeCount');
-        const attendeeInput = document.getElementById('attendeeName');
-        const addAttendeeBtn = document.getElementById('addAttendeeBtn');
-        const resetAttendeesBtn = document.getElementById('resetAttendeesBtn');
-        const globalAttendeesSpan = document.getElementById('globalAttendees');
-        const pollVotesSpan = document.getElementById('pollVotesCount');
-        const feedbackMsgCountSpan = document.getElementById('feedbackMsgCount');
-        const feedbackTextarea = document.getElementById('feedbackMsg');
-        const submitFeedback = document.getElementById('submitFeedbackBtn');
-        const feedbackConfirmDiv = document.getElementById('feedbackConfirm');
-        const feedbackCounterSpan = document.getElementById('feedbackCounter');
-        const pollResultDiv = document.getElementById('pollResult');
         
-        let attendees = ['Alex Chen', 'Jordan Lee', 'Samira Khan', 'Marcus W.', 'Elena R.'];
-        let pollVotes = { 'AI': 0, 'Remote': 0, 'Leadership': 0 };
-        let totalPollVotes = 0;
-        let feedbackMessages = [];
-
-        function updateAttendeeUI() {
-            attendeeContainer.innerHTML = '';
-            attendees.forEach(name => {
-                const badge = document.createElement('span');
-                badge.className = 'attendee-badge';
-                badge.textContent = name;
-                attendeeContainer.appendChild(badge);
-            });
-            attendeeCountSpan.innerText = attendees.length;
-            let globalVal = 187 + attendees.length - 5; // start base 187, dynamic
-            globalAttendeesSpan.innerText = 187 + (attendees.length - 5);
-            statusMsgDiv.innerHTML = `👥 ${attendees.length} registered · Next session in countdown`;
+        // DOM elements
+        const daysSpan = document.getElementById('daysCount');
+        const hoursSpan = document.getElementById('hoursCount');
+        const minutesSpan = document.getElementById('minutesCount');
+        const secondsSpan = document.getElementById('secondsCount');
+        const moodMsg = document.getElementById('liveMoodMsg');
+        const attendeeTotalSpan = document.getElementById('attendeeTotal');
+        const attendeeListDiv = document.getElementById('attendeeListContainer');
+        const attendeeNameInput = document.getElementById('newAttendeeName');
+        const rsvpBtn = document.getElementById('rsvpBtn');
+        const resetRsvpBtn = document.getElementById('resetRsvpBtn');
+        const mainJoinBtn = document.getElementById('mainJoinBtn');
+        const copyLinkBtn = document.getElementById('copyLinkBtn');
+        const calendarBtn = document.getElementById('calendarBtn');
+        
+        // polls & chat
+        const pollBtns = document.querySelectorAll('.pollOptionBtn');
+        const pollResultDiv = document.getElementById('pollLiveResult');
+        const pollTotalSpan = document.getElementById('pollTotalVotes');
+        const chatInput = document.getElementById('chatInputMsg');
+        const sendChatBtn = document.getElementById('sendChatMsgBtn');
+        const chatBox = document.getElementById('chatMessagesBox');
+        const chatMsgCountSpan = document.getElementById('chatMsgCount');
+        const liveAttendeeStatsSpan = document.getElementById('liveAttendeeStats');
+        const statsAttendeesSpan = document.getElementById('statsAttendees');
+        const statsCountriesSpan = document.getElementById('statsCountries');
+        const simulateWorkshop = document.getElementById('simulateWorkshopBtn');
+        
+        // attendee array
+        let attendees = ['Emma Watson', 'Liam Chen', 'Sophia Rodriguez', 'Omar Faruq', 'Nina K.', 'Carlos M.'];
+        let pollVotes = { Networking:0, Learning:0, Inspiration:0, Partnerships:0 };
+        let totalPoll = 0;
+        let chatMessages = [
+            {user:"Sarah J", text:"So excited for the AI panel!"},
+            {user:"Marcus", text:"Anyone from design track here?"},
+            {user:"Organizer", text:"Welcome everyone, 10 mins to opening!"}
+        ];
+        
+        // GIVEAWAY LOGIC
+        let giveawayInterval = null;
+        let giveawaySecondsLeft = 150; // 2 minutes 30 seconds
+        const giveawayTimerDisplay = document.getElementById('giveawayTimerDisplay');
+        const giveawayBtn = document.getElementById('giveawayBtn');
+        const giveawayStatusMsg = document.getElementById('giveawayStatusMsg');
+        
+        function updateGiveawayTimer() {
+            if(giveawaySecondsLeft <= 0) {
+                // Draw winner!
+                clearInterval(giveawayInterval);
+                const winnerNames = ["Alex Rivera", "Jamie Lin", "Taylor Wong", "Casey Morgan", "Riley Park"];
+                const randomWinner = winnerNames[Math.floor(Math.random() * winnerNames.length)];
+                giveawayStatusMsg.innerHTML = `🎉 🎉 WINNER: ${randomWinner} wins the Annual Pro Subscription! 🎉 🎉<br> Next giveaway starts in 30 seconds.`;
+                giveawayBtn.disabled = false;
+                giveawayBtn.textContent = "Enter New Draw";
+                // reset timer after 30 secs to start new round
+                setTimeout(() => {
+                    giveawaySecondsLeft = 150;
+                    giveawayStatusMsg.innerHTML = "✨ New giveaway round started! Enter for a chance to win.";
+                    startGiveawayTimer();
+                }, 30000);
+                return;
+            }
+            const mins = Math.floor(giveawaySecondsLeft / 60);
+            const secs = giveawaySecondsLeft % 60;
+            giveawayTimerDisplay.innerHTML = `⏳ Next draw: ${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
+            giveawaySecondsLeft--;
         }
-
+        
+        function startGiveawayTimer() {
+            if(giveawayInterval) clearInterval(giveawayInterval);
+            giveawayInterval = setInterval(updateGiveawayTimer, 1000);
+        }
+        
+        // Handle giveaway entry
+        let enteredGiveaway = false;
+        giveawayBtn.addEventListener('click', () => {
+            if(giveawaySecondsLeft > 0 && giveawaySecondsLeft < 150) {
+                if(!enteredGiveaway) {
+                    enteredGiveaway = true;
+                    giveawayStatusMsg.innerHTML = "✅ You've entered the giveaway! Good luck 🍀";
+                    giveawayBtn.textContent = "✓ Entered";
+                    giveawayBtn.disabled = true;
+                    setTimeout(() => {
+                        if(giveawayBtn.textContent === "✓ Entered") {
+                            giveawayBtn.disabled = false;
+                            giveawayBtn.textContent = "Enter Draw";
+                            enteredGiveaway = false;
+                            giveawayStatusMsg.innerHTML = "You can enter again in the next round!";
+                        }
+                    }, 40000);
+                } else {
+                    giveawayStatusMsg.innerHTML = "⏳ You already entered this round! Wait for next draw.";
+                }
+            } else {
+                giveawayStatusMsg.innerHTML = "🎁 Draw in progress or resetting. Try again in a moment!";
+            }
+        });
+        
+        // Resource claim buttons
+        document.querySelectorAll('.claim-btn[data-resource]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const resource = btn.getAttribute('data-resource');
+                if(resource === 'report') {
+                    alert("📘 2026 Trend Report is being emailed to you! Check your inbox (demo).");
+                    moodMsg.innerHTML = "📥 Trend Report sent! Level up your insights.";
+                } else if(resource === 'workshop') {
+                    alert("🎫 Workshop Pass claimed! Access link sent to your dashboard.");
+                    moodMsg.innerHTML = "🎟️ You have access to 3 premium workshops!";
+                }
+            });
+        });
+        
+        function updateAttendeeUI() {
+            attendeeListDiv.innerHTML = '';
+            attendees.forEach(name => {
+                let span = document.createElement('span');
+                span.className = 'sponsor-logo';
+                span.style.background = '#eef2ff';
+                span.style.padding = '0.2rem 0.9rem';
+                span.textContent = name;
+                attendeeListDiv.appendChild(span);
+            });
+            let count = attendees.length;
+            attendeeTotalSpan.innerText = count;
+            liveAttendeeStatsSpan.innerText = count;
+            statsAttendeesSpan.innerText = count;
+            statsCountriesSpan.innerText = 34 + Math.floor(count / 20);
+            moodMsg.innerHTML = count > 10 ? `🎉 ${count} attendees already inside · vibrant community` : `⏳ Countdown + join the RSVP list`;
+        }
+        
         function addAttendee(name) {
             let clean = name.trim();
-            if(clean === ""){ statusMsgDiv.innerHTML = "⚠️ Please enter a name to RSVP."; return false; }
-            if(attendees.includes(clean)){ statusMsgDiv.innerHTML = `👋 ${clean} already in guest list!`; return false; }
+            if(clean === "") { moodMsg.innerHTML = "⚠️ Please enter a name to RSVP."; return false; }
+            if(attendees.includes(clean)) { moodMsg.innerHTML = `👋 ${clean} already in guest list!`; return false; }
             attendees.push(clean);
             updateAttendeeUI();
-            statusMsgDiv.innerHTML = `🎉 ${clean} just joined the summit! Welcome.`;
-            attendeeInput.value = '';
-            setTimeout(() => { if(statusMsgDiv.innerText.includes('joined')) statusMsgDiv.innerHTML = "⏳ Get ready for amazing speakers!"; }, 2500);
+            moodMsg.innerHTML = `✨ ${clean} just secured a seat! Welcome to Summit 2026 ✨`;
+            attendeeNameInput.value = '';
+            setTimeout(() => { if(moodMsg.innerHTML.includes("secured")) moodMsg.innerHTML = "🚀 Main stage countdown active · get ready!"; }, 2800);
             return true;
         }
-
-        addAttendeeBtn.addEventListener('click', () => addAttendee(attendeeInput.value));
-        resetAttendeesBtn.addEventListener('click', () => {
-            attendees = ['Alex Chen', 'Jordan Lee', 'Samira Khan', 'Marcus W.', 'Elena R.'];
+        
+        rsvpBtn.addEventListener('click', () => addAttendee(attendeeNameInput.value));
+        resetRsvpBtn.addEventListener('click', () => {
+            attendees = ['Emma Watson', 'Liam Chen', 'Sophia Rodriguez', 'Omar Faruq', 'Nina K.', 'Carlos M.'];
             updateAttendeeUI();
-            statusMsgDiv.innerHTML = "🔄 Guest list reset. Join the conversation!";
+            moodMsg.innerHTML = "🔄 Guest list reset. Invite friends!";
         });
-        attendeeInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') addAttendee(attendeeInput.value); });
-
-        // Timer
-        function updateCountdown() {
+        attendeeNameInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') addAttendee(attendeeNameInput.value); });
+        
+        // Countdown
+        function updateTimer() {
             const now = new Date().getTime();
-            const dist = meetingDate.getTime() - now;
-            if(dist < 0) { meetingDate.setDate(meetingDate.getDate() + 7); updateCountdown(); return; }
-            const days = Math.floor(dist / (86400000));
-            const hours = Math.floor((dist % 86400000) / 3600000);
-            const mins = Math.floor((dist % 3600000) / 60000);
-            const secs = Math.floor((dist % 60000) / 1000);
-            daysSpan.innerText = days < 10 ? '0'+days : days;
-            hoursSpan.innerText = hours < 10 ? '0'+hours : hours;
-            minutesSpan.innerText = mins < 10 ? '0'+mins : mins;
-            secondsSpan.innerText = secs < 10 ? '0'+secs : secs;
-            if(dist < 3600000 && dist > 0) statusMsgDiv.innerHTML = "⏰ Less than 1 hour to main event! Get ready 🚀";
+            const dist = targetDate - now;
+            if(dist < 0) {
+                moodMsg.innerHTML = "🔴 EVENT IS LIVE! Join the main room now.";
+                daysSpan.innerText = "00"; hoursSpan.innerText="00"; minutesSpan.innerText="00"; secondsSpan.innerText="00";
+                return;
+            }
+            let d = Math.floor(dist/(86400000));
+            let h = Math.floor((dist%86400000)/3600000);
+            let m = Math.floor((dist%3600000)/60000);
+            let s = Math.floor((dist%60000)/1000);
+            daysSpan.innerText = d<10?'0'+d:d;
+            hoursSpan.innerText = h<10?'0'+h:h;
+            minutesSpan.innerText = m<10?'0'+m:m;
+            secondsSpan.innerText = s<10?'0'+s:s;
+            if(dist < 3600000 && dist > 0) moodMsg.innerHTML = "⏰ Less than 1 hour! Join the lobby 🚪";
         }
-
-        joinBtn.addEventListener('click', () => {
-            if(new Date() >= meetingDate) alert("🔊 Meeting is LIVE! You're now in the main hall.");
+        
+        mainJoinBtn.addEventListener('click', () => {
+            if(new Date() >= targetDate) alert("🎉 You've entered the virtual summit! Explore sessions.");
             else alert("✅ You're pre-registered! We'll notify you when doors open.");
-            statusMsgDiv.innerHTML = "🎧 You've entered the virtual lobby! Chat and network.";
+            moodMsg.innerHTML = "🎧 You are in the virtual foyer · network now!";
         });
-        copyBtn.addEventListener('click', () => {
-            navigator.clipboard.writeText("https://meetpulse.io/summit2026").then(() => statusMsgDiv.innerHTML="📎 Invite link copied! Share with peers.");
+        copyLinkBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText("https://summit2026.meetpulse.io/invite").then(() => moodMsg.innerHTML="📎 Link copied! Share with peers.");
         });
-
-        // POLL logic
-        const pollBtns = document.querySelectorAll('.poll-btn');
+        calendarBtn.addEventListener('click', () => {
+            alert("📅 Google Calendar invite generated (demo) – event saved!");
+        });
+        
+        // Poll updates
         function updatePollUI() {
-            let total = pollVotes.AI + pollVotes.Remote + pollVotes.Leadership;
-            totalPollVotes = total;
-            pollVotesSpan.innerText = total;
-            let highest = Object.keys(pollVotes).reduce((a,b) => pollVotes[a] > pollVotes[b] ? a : b, 'AI');
-            let topicNames = {AI:'🤖 AI', Remote:'🏡 Remote', Leadership:'🚀 Leadership'};
-            pollResultDiv.innerHTML = `📊 ${total} votes · Leading: ${topicNames[highest]} (${pollVotes[highest]} votes)`;
+            let total = pollVotes.Networking + pollVotes.Learning + pollVotes.Inspiration + pollVotes.Partnerships;
+            totalPoll = total;
+            pollTotalSpan.innerText = total;
+            let highest = Object.keys(pollVotes).reduce((a,b) => pollVotes[a] > pollVotes[b] ? a : b, "Networking");
+            pollResultDiv.innerHTML = `📊 ${total} votes · Leading: ${highest} (${pollVotes[highest]} votes) · interactive poll`;
         }
         pollBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
-                let topic = btn.getAttribute('data-topic');
-                if(topic && pollVotes[topic] !== undefined) {
-                    pollVotes[topic]++;
+                let opt = btn.getAttribute('data-opt');
+                if(opt && pollVotes[opt] !== undefined) {
+                    pollVotes[opt]++;
                     updatePollUI();
-                    statusMsgDiv.innerHTML = `🗳️ Voted for ${topic}! See live results above.`;
-                    setTimeout(() => { if(statusMsgDiv.innerText.includes('Voted')) statusMsgDiv.innerHTML = "✨ Countdown active · join the summit!"; }, 1800);
+                    moodMsg.innerHTML = `🗳️ Voted for "${opt}"! See live results.`;
+                    setTimeout(() => { if(moodMsg.innerHTML.includes("Voted")) moodMsg.innerHTML = "⏳ Summit countdown · engage more!"; }, 2000);
                 }
             });
         });
-
-        // Feedback system
-        function updateFeedbackStats() {
-            feedbackMsgCountSpan.innerText = feedbackMessages.length;
-            feedbackCounterSpan.innerHTML = `💬 ${feedbackMessages.length} messages from attendees`;
+        
+        // Chat functions
+        function renderChat() {
+            chatBox.innerHTML = '';
+            chatMessages.forEach(msg => {
+                let msgDiv = document.createElement('div');
+                msgDiv.className = 'chat-msg';
+                msgDiv.innerHTML = `<strong>${msg.user}:</strong> ${msg.text}`;
+                chatBox.appendChild(msgDiv);
+            });
+            chatBox.scrollTop = chatBox.scrollHeight;
+            chatMsgCountSpan.innerText = chatMessages.length;
         }
-        submitFeedback.addEventListener('click', () => {
-            let msg = feedbackTextarea.value.trim();
-            if(msg === "") { feedbackConfirmDiv.innerHTML = "⚠️ Write something before sending."; return; }
-            feedbackMessages.push(msg);
-            updateFeedbackStats();
-            feedbackConfirmDiv.innerHTML = "✅ Thanks! Your insight will be shared with speakers.";
-            feedbackTextarea.value = "";
-            setTimeout(() => { feedbackConfirmDiv.innerHTML = ""; }, 2500);
-            // extra dynamic touch: change badge
-            document.getElementById('pollBadge').innerHTML = "💬 new feedback!";
-            setTimeout(() => { document.getElementById('pollBadge').innerHTML = "✨ vote now"; }, 3000);
+        function addChatMessage(user, text) {
+            if(text.trim() === "") return;
+            chatMessages.push({user: user, text: text});
+            renderChat();
+            moodMsg.innerHTML = `💬 New message from ${user}!`;
+            setTimeout(() => { if(moodMsg.innerHTML.includes("New message")) moodMsg.innerHTML = "🔥 Summit live — join conversation!"; }, 2200);
+        }
+        sendChatBtn.addEventListener('click', () => {
+            let msg = chatInput.value.trim();
+            if(msg) {
+                let randomUser = ["Emma","Carlos","Lina","David","Sophia"][Math.floor(Math.random()*5)];
+                addChatMessage(randomUser, msg);
+                chatInput.value = "";
+            } else {
+                moodMsg.innerHTML = "✏️ Please type a message before sending.";
+            }
         });
-
-        // Mouse movement interactive blob
-        const visualZone = document.getElementById('visualZone');
-        const blob = document.getElementById('animatedBlob');
-        if(visualZone && blob) {
-            visualZone.addEventListener('mousemove', (e) => {
-                const rect = visualZone.getBoundingClientRect();
-                let x = e.clientX - rect.left - 70;
-                let y = e.clientY - rect.top - 70;
-                x = Math.min(Math.max(x, -20), rect.width - 100);
-                y = Math.min(Math.max(y, -20), rect.height - 100);
-                blob.style.left = x + 'px';
-                blob.style.top = y + 'px';
-                blob.style.transform = 'scale(1.08)';
+        
+        // workshop simulation
+        simulateWorkshop.addEventListener('click', () => {
+            alert("🎯 You've entered the Virtual Booth - Workshop: 'Designing AI Futures' starts in 5 min!");
+            moodMsg.innerHTML = "🛠️ Virtual booth joined! Get ready for interactive session.";
+        });
+        
+        // blob mouse movement
+        const blobZone = document.getElementById('blobZone');
+        const movingBlob = document.getElementById('movingBlob');
+        if(blobZone && movingBlob) {
+            blobZone.addEventListener('mousemove', (e) => {
+                const rect = blobZone.getBoundingClientRect();
+                let x = e.clientX - rect.left - 100;
+                let y = e.clientY - rect.top - 100;
+                x = Math.min(Math.max(x, -20), rect.width - 120);
+                y = Math.min(Math.max(y, -20), rect.height - 120);
+                movingBlob.style.left = x + 'px';
+                movingBlob.style.top = y + 'px';
+                movingBlob.style.transform = 'scale(1.1)';
             });
-            visualZone.addEventListener('mouseleave', () => {
-                blob.style.left = '50%';
-                blob.style.top = '60%';
-                blob.style.transform = 'translate(-50%, -50%) scale(1)';
+            blobZone.addEventListener('mouseleave', () => {
+                movingBlob.style.left = '50%';
+                movingBlob.style.top = '60%';
+                movingBlob.style.transform = 'translate(-50%, -50%) scale(1)';
             });
-            blob.style.position = 'absolute';
-            blob.style.left = '50%';
-            blob.style.top = '60%';
-            blob.style.transform = 'translate(-50%, -50%)';
+            movingBlob.style.position = 'absolute';
+            movingBlob.style.left = '50%';
+            movingBlob.style.top = '60%';
+            movingBlob.style.transform = 'translate(-50%, -50%)';
         }
-
-        // initial update
+        
+        // initializers
         updateAttendeeUI();
         updatePollUI();
-        updateFeedbackStats();
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        // bonus style for dynamic messages
-        const msgDiv = statusMsgDiv;
+        renderChat();
+        setInterval(updateTimer, 1000);
+        updateTimer();
+        startGiveawayTimer();
+        
+        // extra stats random increase (attendance simulation)
         setInterval(() => {
-            if(!msgDiv.innerText.includes("Voted") && !msgDiv.innerText.includes("joined") && !msgDiv.innerText.includes("invite")) {
-                // keep vibe fresh
-                if(Math.random() < 0.2 && msgDiv.innerText.includes("Countdown")) {
-                    msgDiv.innerHTML = "🌟 Speakers are preparing exclusive insights!";
-                    setTimeout(()=> { if(msgDiv.innerText.includes("insights")) msgDiv.innerHTML = "⏳ Countdown to main stage keynote"; }, 3000);
+            if(Math.random() < 0.2 && attendees.length < 200) {
+                let fakeNames = ["Taylor", "Jordan", "Riley", "Casey", "Avery"];
+                let randName = fakeNames[Math.floor(Math.random()*fakeNames.length)] + Math.floor(Math.random()*100);
+                if(!attendees.includes(randName)) {
+                    attendees.push(randName);
+                    updateAttendeeUI();
+                    moodMsg.innerHTML = `✨ ${randName} just joined from global feed!`;
+                    setTimeout(() => { if(moodMsg.innerHTML.includes("joined")) moodMsg.innerHTML = "🌍 Summit energy rising!"; }, 2500);
                 }
             }
-        }, 8000);
+        }, 15000);
     })();
 </script>
 </body>
